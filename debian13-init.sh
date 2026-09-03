@@ -31,6 +31,16 @@
 set -Eeuo pipefail
 umask 022
 
+# ------------------------------------------------------------------------------
+# Administrative PATH
+#
+# Some minimal/cloud Debian environments may give root a PATH that does not
+# contain /usr/sbin or /sbin. Many system administration commands live there
+# (for example update-locale and ufw), so use a deterministic PATH.
+# ------------------------------------------------------------------------------
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 SCRIPT_VERSION="1.0.0"
 EXPECTED_CODENAME="trixie"
 EXPECTED_MAJOR_VERSION="13"
